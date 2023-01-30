@@ -12,14 +12,6 @@ class Customer(CreatedAt, UpdatedAt, Delete):
     location = models.ForeignKey('car_showroom_app.Location', on_delete=models.SET_NULL, null=True)
 
 
-class PurchaseHistory(CreatedAt, UpdatedAt, Delete):
-    customer = models.ForeignKey('customer.Customer', on_delete=models.CASCADE)
-    car = models.ForeignKey(Car, on_delete=models.SET_NULL, null=True)
-    car_showroom = models.ForeignKey('car_showroom_app.CarShowroom', on_delete=models.SET_NULL, null=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    count = models.PositiveIntegerField(default=1)
-
-
 class Offer(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name='offer_cars')
     price = models.DecimalField(max_digits=10, decimal_places=2)

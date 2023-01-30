@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'applications.car_showroom_app.apps.CarShowroomAppConfig',
     'applications.customer.apps.CustomerConfig',
     'applications.supplier.apps.SupplierConfig',
+    'applications.authentication.apps.AuthenticationConfig',
     'django_countries',
 ]
 
@@ -130,6 +131,33 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'applications.authentication.middleware.SafeJWTAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework_json_api.pagination.PageNumberPagination',
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DATETIME_FORMAT': "%d.%m.%Y %H:%M:%S",
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=7),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
+    'ISSUER': 'config',
+    'SIGNING_KEY': 'django-insecure-5e&%1utgp5#!^wmizg$uxml@0u10&#hohmafvyh)%cep+!+&$)'
+}
+
+REFRESH_TOKEN_SECRET = os.getenv('REFRESH_TOKEN_SECRET')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

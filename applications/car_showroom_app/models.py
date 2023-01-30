@@ -21,7 +21,7 @@ class CarShowroom(CreatedAt, UpdatedAt, Delete):
 class CarsShowroom(CreatedAt, UpdatedAt, Delete):
     cars_showroom = models.ForeignKey('supplier.Car', on_delete=models.SET_NULL, null=True)
     count = models.PositiveIntegerField(default=1)
-    supplier = models.ForeignKey('supplier.Supplier', on_delete=models.CASCADE, related_name='suppliers', blank=True, null=True)
+    showroom = models.ForeignKey('car_showroom_app.CarShowroom', on_delete=models.CASCADE, related_name='suppliers', blank=True, null=True)
 
 
 class CarShowroomSale(CreatedAt, UpdatedAt, Delete):
