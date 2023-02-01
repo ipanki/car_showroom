@@ -43,6 +43,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'applications.car_showroom_app.apps.CarShowroomAppConfig',
+    'applications.customer.apps.CustomerConfig',
+    'applications.supplier.apps.SupplierConfig',
+    'applications.car.apps.CarConfig',
+    'applications.history.apps.HistoryConfig',
+    'django_countries',
 ]
 
 MIDDLEWARE = [
