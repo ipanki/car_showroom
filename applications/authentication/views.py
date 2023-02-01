@@ -12,10 +12,7 @@ class RegistrationViewSet(ViewSet):
     @permission_classes([AllowAny])
     @action(detail=False, methods=['post'])
     def signup(self, request):
-        user = request.data.get('username')
-        password = request.data.get('password')
-        serializer = UserCreateSerializer(
-            data={'username': user, 'password': password})
+        serializer = UserCreateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -26,4 +23,4 @@ class RegistrationViewSet(ViewSet):
         data = login_user(request.data.get('username'),
                           request.data.get('password'))
 
-        return Response(data=data, status=status.HTTP_201_CREATED)
+        return Response(data=data, status=status.HTTP_401_UNAUTHORIZED)

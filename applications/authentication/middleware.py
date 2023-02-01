@@ -38,7 +38,7 @@ def generate_access_token(user):
 
     access_token_payload = {
         'user_id': user.id,
-        'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1),
+        'exp': datetime.datetime.utcnow() + datetime.timedelta(days=settings.TOKEN_EXPIRATION_DATE),
         'iat': datetime.datetime.utcnow(),
     }
     access_token = jwt.encode(access_token_payload,
@@ -48,9 +48,8 @@ def generate_access_token(user):
 
 def login_user(username, password):
 
-    if (username is None) or (password is None):
-        raise exceptions.AuthenticationFailed(
-            'username and password required')
+    if username is None or password is None:
+        raise exceptions.AuthenticationFailed('username and password required')
 
     user = User.objects.filter(username=username).first()
     if user is None:
