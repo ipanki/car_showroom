@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'applications.customer.apps.CustomerConfig',
     'applications.supplier.apps.SupplierConfig',
     'applications.car.apps.CarConfig',
+    'applications.history.apps.HistoryConfig',
     'django_countries',
 ]
 
