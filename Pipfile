@@ -34,6 +34,9 @@ wcwidth = "0.2.5"
 wrapt = "1.13.3"
 psycopg2-binary = "*"
 django-countries = "*"
+drf-nested-routers = "*"
+pre-commit = "*"
+pylint = "*"
 
 [dev-packages]
 autoflake = "1.4"

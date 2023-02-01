@@ -1,4 +1,5 @@
 from django.db import models
+
 from applications.extensions.abstract_models import AbstractInstance
 
 
@@ -14,9 +15,11 @@ class CarConfiguration(AbstractInstance):
 class Car(AbstractInstance):
     brand = models.CharField(max_length=50)
     model = models.CharField(max_length=50)
-    car = models.OneToOneField('car.CarConfiguration', on_delete=models.CASCADE, blank=True, null=True, related_name='car_cfg')
+    car = models.OneToOneField('car.CarConfiguration', on_delete=models.CASCADE,
+                               blank=True, null=True, related_name='car_cfg')
 
 
 class CarPrice(AbstractInstance):
-    car = models.ForeignKey('car.Car', on_delete=models.CASCADE, related_name= 'car_prices')
+    car = models.ForeignKey(
+        'car.Car', on_delete=models.CASCADE, related_name='car_prices')
     price = models.DecimalField(max_digits=10, decimal_places=2)

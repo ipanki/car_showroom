@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from applications.car_showroom_app.models import Location
 from applications.customer.models import Customer
 
@@ -10,4 +11,4 @@ class LocationAdmin(admin.ModelAdmin):
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'phone', 'birthday', 'balance', 'location')
+    list_display = ('user', 'name', 'phone', 'birthday', 'balance', 'location')
