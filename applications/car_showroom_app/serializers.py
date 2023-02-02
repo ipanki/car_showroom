@@ -8,7 +8,7 @@ class CreateShowroomSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Showroom
-        fields = ('name', 'description', 'location')
+        fields = ('name', 'description', 'location', 'preferred_cars')
 
 
 class GetShowroomCarSerializer(serializers.ModelSerializer):

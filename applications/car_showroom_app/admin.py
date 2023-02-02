@@ -10,4 +10,4 @@ class ShowroomAdmin(admin.ModelAdmin):
 
     @staticmethod
     def get_pref_car(obj):
-        return '\n'.join([p.engine for p in obj.preferred_cars.all()])
+        return '\n'.join([p.color for p in obj.preferred_cars.all()])
