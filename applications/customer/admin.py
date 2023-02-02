@@ -11,4 +11,4 @@ class LocationAdmin(admin.ModelAdmin):
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('user', 'name', 'phone', 'birthday', 'balance', 'location')
+    list_display = ('user', 'name', 'phone', 'birthday', 'balance', 'location', 'created_date')
