@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'applications.car.apps.CarConfig',
     'applications.history.apps.HistoryConfig',
     'django_countries',
+    'drf_yasg',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -59,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'car_showroom.urls'
@@ -140,4 +143,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 FIXTURE_DIRS = [
     'fixtures',
+]
+
+INTERNAL_IPS = [
+    '127.0.0.1',
 ]
