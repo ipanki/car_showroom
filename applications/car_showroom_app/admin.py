@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from applications.car_showroom_app.models import Showroom
-
+from applications.car_showroom_app.models import Showroom, CarsShowroom
 
 @admin.register(Showroom)
 class ShowroomAdmin(admin.ModelAdmin):
@@ -11,3 +10,8 @@ class ShowroomAdmin(admin.ModelAdmin):
     @staticmethod
     def get_pref_car(obj):
         return '\n'.join([p.color for p in obj.preferred_cars.all()])
+
+
+@admin.register(CarsShowroom)
+class CarsShowroomAdmin(admin.ModelAdmin):
+    list_display = ('cars_showroom', 'car_showroom', 'count')
