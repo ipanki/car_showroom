@@ -8,7 +8,7 @@ from applications.car_showroom_app.serializers import (
     SetShowroomSaleSerializer)
 
 
-class ShowroomViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
+class ShowroomViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = CreateShowroomSerializer
     queryset = Showroom.objects
@@ -17,13 +17,13 @@ class ShowroomViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, mixins.C
         serializer.save(user=self.request.user)
 
 
-class GetShowroomCarViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
+class GetShowroomCarViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = GetShowroomCarSerializer
     queryset = CarsShowroom.objects
 
 
-class SetShowroomSaleViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
+class SetShowroomSaleViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = SetShowroomSaleSerializer
     queryset = CarShowroomSale.objects

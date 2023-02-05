@@ -10,6 +10,7 @@ class PageApiUserTestCase(APITestCase):
     @classmethod
     def setUpTestData(cls):
         cls.user = User.objects.create_user(username='testuser1', password='testpassword')
+        cls.user.save()
 
     def setUp(self):
         self.client.login(username='testuser1', password='testpassword')

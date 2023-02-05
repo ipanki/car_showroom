@@ -8,7 +8,7 @@ from applications.customer.serializers import (CreateCustomerSerializer,
                                                OfferSerializer)
 
 
-class CustomerViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
+class CustomerViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = CreateCustomerSerializer
     queryset = Customer.objects
@@ -17,13 +17,13 @@ class CustomerViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, mixins.C
         serializer.save(user=self.request.user)
 
 
-class LocationViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
+class LocationViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = LocationSerializer
     queryset = Location.objects
 
 
-class CreateOfferViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
+class CreateOfferViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = OfferSerializer
     queryset = Offer.objects

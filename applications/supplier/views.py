@@ -7,7 +7,7 @@ from applications.supplier.serializers import (CreateSupplierSerializer,
                                                SetSupplierSaleSerializer)
 
 
-class SupplierViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
+class SupplierViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = CreateSupplierSerializer
     queryset = Supplier.objects
@@ -16,13 +16,13 @@ class SupplierViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, mixins.C
         serializer.save(user=self.request.user)
 
 
-class GetSupplierCarViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
+class GetSupplierCarViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = GetSupplierCarSerializer
     queryset = CarSupplier.objects
 
 
-class SetSupplierSaleViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
+class SetSupplierSaleViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = SetSupplierSaleSerializer
     queryset = SupplierSale.objects
