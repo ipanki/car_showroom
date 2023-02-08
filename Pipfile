@@ -38,6 +38,8 @@ drf-nested-routers = "*"
 pre-commit = "*"
 pylint = "*"
 fixtures = "*"
+drf-yasg = "*"
+django-debug-toolbar = "*"
 
 [dev-packages]
 autoflake = "1.4"
