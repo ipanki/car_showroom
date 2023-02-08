@@ -1,0 +1,107 @@
+[
+  {
+    "model": "car.carconfiguration",
+    "pk": 1,
+    "fields": {
+      "created_date": "2023-03-02T08:14:08.844Z",
+      "updated_date": "2023-03-02T08:14:08.844Z",
+      "description": "Huge car",
+      "color": "Black",
+      "mileage": "15",
+      "year": "2022",
+      "engine": "4.0",
+      "vin_number": "1KLBN52TWXM186109"
+    }
+  },
+  {
+    "model": "car.car",
+    "pk": 1,
+    "fields": {
+      "created_date": "2023-03-02T08:14:08.844Z",
+      "updated_date": "2023-03-02T08:14:08.844Z",
+      "brand": "Mercedes",
+      "model": "C63 S AMG",
+      "car": 1
+    }
+  },
+  {
+    "model": "car.carprice",
+    "pk": 1,
+    "fields": {
+      "created_date": "2023-03-02T08:14:08.844Z",
+      "updated_date": "2023-03-02T08:14:08.844Z",
+      "car": 1,
+      "price": "25000"
+    }
+  },
+  {
+    "model": "car.carconfiguration",
+    "pk": 2,
+    "fields": {
+      "created_date": "2023-03-02T08:14:08.844Z",
+      "updated_date": "2023-03-02T08:14:08.844Z",
+      "description": "Fast car",
+      "color": "Blue",
+      "mileage": "1500",
+      "year": "2021",
+      "engine": "4.0",
+      "vin_number": "1OLBN52TWXM186155"
+    }
+  },
+  {
+    "model": "car.car",
+    "pk": 2,
+    "fields": {
+      "created_date": "2023-03-02T08:14:08.844Z",
+      "updated_date": "2023-03-02T08:14:08.844Z",
+      "brand": "BMW",
+      "model": "M5 F90",
+      "car": 2
+    }
+  },
+  {
+    "model": "car.carprice",
+    "pk": 2,
+    "fields": {
+      "created_date": "2023-03-02T08:14:08.844Z",
+      "updated_date": "2023-03-02T08:14:08.844Z",
+      "car": 2,
+      "price": "55000"
+    }
+  },
+    {
+    "model": "car.carconfiguration",
+    "pk": 3,
+    "fields": {
+      "created_date": "2023-03-02T08:14:08.844Z",
+      "updated_date": "2023-03-02T08:14:08.844Z",
+      "description": "Business class",
+      "color": "Black",
+      "mileage": "2400",
+      "year": "2020",
+      "engine": "5.0",
+      "vin_number": "3ALBN88TWXM186155"
+    }
+  },
+  {
+    "model": "car.car",
+    "pk": 3,
+    "fields": {
+      "created_date": "2023-03-02T08:14:08.844Z",
+      "updated_date": "2023-03-02T08:14:08.844Z",
+      "brand": "Audi",
+      "model": "A8",
+      "car": 3
+    }
+  },
+  {
+    "model": "car.carprice",
+    "pk": 3,
+    "fields": {
+      "created_date": "2023-03-02T08:14:08.844Z",
+      "updated_date": "2023-03-02T08:14:08.844Z",
+      "car": 3,
+      "price": "63000"
+    }
+  }
+]
