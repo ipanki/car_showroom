@@ -11,7 +11,7 @@ from applications.supplier.serializers import (CreateSupplierSerializer,
 class SupplierViewSet(GetCreateMixin):
     permission_classes = (IsAuthenticated,)
     serializer_class = CreateSupplierSerializer
-    queryset = Supplier.objects
+    queryset = Supplier.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -20,10 +20,10 @@ class SupplierViewSet(GetCreateMixin):
 class GetSupplierCarViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = GetSupplierCarSerializer
-    queryset = CarSupplier.objects
+    queryset = CarSupplier.objects.all()
 
 
 class SetSupplierSaleViewSet(GetCreateMixin):
     permission_classes = (IsAuthenticated,)
     serializer_class = SetSupplierSaleSerializer
-    queryset = SupplierSale.objects
+    queryset = SupplierSale.objects.all()

@@ -12,7 +12,7 @@ from applications.car_showroom_app.serializers import (
 class ShowroomViewSet(GetCreateMixin):
     permission_classes = (IsAuthenticated,)
     serializer_class = CreateShowroomSerializer
-    queryset = Showroom.objects
+    queryset = Showroom.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -21,10 +21,10 @@ class ShowroomViewSet(GetCreateMixin):
 class GetShowroomCarViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = GetShowroomCarSerializer
-    queryset = CarsShowroom.objects
+    queryset = CarsShowroom.objects.all()
 
 
 class SetShowroomSaleViewSet(GetCreateMixin):
     permission_classes = (IsAuthenticated,)
     serializer_class = SetShowroomSaleSerializer
-    queryset = CarShowroomSale.objects
+    queryset = CarShowroomSale.objects.all()

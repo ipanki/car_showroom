@@ -12,7 +12,7 @@ from applications.customer.serializers import (CreateCustomerSerializer,
 class CustomerViewSet(GetCreateMixin):
     permission_classes = (IsAuthenticated,)
     serializer_class = CreateCustomerSerializer
-    queryset = Customer.objects
+    queryset = Customer.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -21,10 +21,10 @@ class CustomerViewSet(GetCreateMixin):
 class LocationViewSet(GetCreateMixin):
     permission_classes = (IsAuthenticated,)
     serializer_class = LocationSerializer
-    queryset = Location.objects
+    queryset = Location.objects.all()
 
 
 class CreateOfferViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = OfferSerializer
-    queryset = Offer.objects
+    queryset = Offer.objects.all()
