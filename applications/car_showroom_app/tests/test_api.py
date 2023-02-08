@@ -11,7 +11,6 @@ class PageApiUserTestCase(APITestCase):
     def setUpTestData(cls):
         cls.user = User.objects.create_user(username='testuser1', password='testpassword')
         cls.location = Location.objects.create(country='1', city='test2', street='test3', home='4')
-        cls.location.save()
 
     def setUp(self):
         self.client.login(username='testuser1', password='testpassword')
