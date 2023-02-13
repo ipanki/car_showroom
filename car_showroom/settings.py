@@ -43,14 +43,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'applications.car_showroom_app.apps.CarShowroomAppConfig',
     'applications.customer.apps.CustomerConfig',
     'applications.supplier.apps.SupplierConfig',
     'applications.car.apps.CarConfig',
     'applications.history.apps.HistoryConfig',
+    'applications.authentication.apps.AuthenticationConfig',
     'django_countries',
     'drf_yasg',
     'debug_toolbar',
+    'authemail',
 ]
 
 MIDDLEWARE = [
@@ -149,8 +152,10 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
-CELERY_BROKER_URL = "redis://%s:%s" % (os.getenv('REDIS_HOST'), os.getenv('REDIS_PORT'))
-CELERY_RESULT_BACKEND = "redis://%s:%s" % (os.getenv('REDIS_HOST'), os.getenv('REDIS_PORT'))
+CELERY_BROKER_URL = "redis://%s:%s" % (os.getenv('REDIS_HOST'),
+                                       os.getenv('REDIS_PORT'))
+CELERY_RESULT_BACKEND = "redis://%s:%s" % (
+    os.getenv('REDIS_HOST'), os.getenv('REDIS_PORT'))
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
@@ -161,7 +166,7 @@ REST_FRAMEWORK = {
     ),
     'PAGE_SIZE': 10,
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'applications.authentication.token_auth.SafeJWTAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -174,4 +179,16 @@ REST_FRAMEWORK = {
 }
 
 TOKEN_EXPIRATION_DATE = 1
+
+AUTH_USER_MODEL = 'authentication.User'
+
+EMAIL_FROM = os.getenv('EMAIL_FROM')
+EMAIL_BCC = os.getenv('EMAIL_BCC')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 

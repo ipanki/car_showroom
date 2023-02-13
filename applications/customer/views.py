@@ -1,12 +1,12 @@
 from rest_framework import mixins, viewsets
 from rest_framework.permissions import IsAuthenticated
 
-from applications.extensions.mixins import GetCreateMixin
 from applications.car_showroom_app.models import Location
 from applications.customer.models import Customer, Offer
 from applications.customer.serializers import (CreateCustomerSerializer,
                                                LocationSerializer,
                                                OfferSerializer)
+from applications.extensions.mixins import GetCreateMixin
 
 
 class CustomerViewSet(GetCreateMixin):

@@ -1,9 +1,9 @@
-from django.db.models import Q, F
+from django.db.models import F, Q
 
-from applications.car_showroom_app.models import Showroom, CarsShowroom
-from applications.supplier.models import CarSupplier, SupplierSale
 from applications.car.models import CarPrice
+from applications.car_showroom_app.models import CarsShowroom, Showroom
 from applications.history.models import SellHistory
+from applications.supplier.models import CarSupplier, SupplierSale
 from car_showroom.celery import app
 
 
@@ -18,10 +18,13 @@ def buy_cars():
 
             suppliers_cars = CarSupplier.objects.filter(pref_cars).first()
             if suppliers_cars:
-                car_price = CarPrice.objects.filter(pk=suppliers_cars.id).order_by("-price").first()
-            cars_on_discount = SupplierSale.objects.filter(pref_cars).order_by("-discount").first()
+                car_price = CarPrice.objects.filter(
+                    pk=suppliers_cars.id).order_by("-price").first()
+            cars_on_discount = SupplierSale.objects.filter(
+                pref_cars).order_by("-discount").first()
             if cars_on_discount:
-                car_price_on_discount = CarPrice.objects.filter(pk=cars_on_discount.id).order_by("-price").first()
+                car_price_on_discount = CarPrice.objects.filter(
+                    pk=cars_on_discount.id).order_by("-price").first()
 
             if suppliers_cars is None and cars_on_discount is None:
                 continue
@@ -51,7 +54,8 @@ def buy_cars():
                     showroom.save()
                     purchase.supplier.save()
                 else:
-                    purchased_car = CarsShowroom.objects.create(cars_showroom=purchase.car, car_showroom=showroom)
+                    purchased_car = CarsShowroom.objects.create(
+                        cars_showroom=purchase.car, car_showroom=showroom)
                     history = SellHistory.objects.create(
                         supplier=purchase.supplier, car=purchase.car, car_showroom=showroom, price=price.price)
                     history.save()
