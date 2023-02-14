@@ -1,4 +1,5 @@
 from django.db.models import Q, F
+from django.db import transaction
 
 from applications.car_showroom_app.models import Showroom, CarsShowroom
 from applications.supplier.models import CarSupplier, SupplierSale
@@ -8,9 +9,10 @@ from car_showroom.celery import app
 
 
 @app.task
+@transaction.atomic
 def buy_cars():
     for showroom in Showroom.objects.all():
-        for car_config in showroom.preferred_cars.all():
+        for car_config in showroom.preferred_cars.prefetch_related('car_prefs').all():
             pref_cars = (Q(car__car__color=car_config.color) &
                          Q(car__car__engine=car_config.engine) &
                          Q(car__car__mileage=car_config.mileage) &
