@@ -11,7 +11,7 @@ from car_showroom.celery import app
 @app.task
 @transaction.atomic
 def customer_buy_cars():
-    for offer in Offer.objects.all():
+    for offer in Offer.objects.select_related('customer').all():
         showrooms_cars = CarsShowroom.objects.filter(Q(count__gte=1) & Q(cars_showroom=offer.car)).first()
 
         if showrooms_cars:
