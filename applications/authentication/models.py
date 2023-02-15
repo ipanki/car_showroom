@@ -14,4 +14,3 @@ class User(EmailAbstractUser):
     title = models.CharField(max_length=80)
 
     objects = EmailUserManager()
-

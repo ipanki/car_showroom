@@ -10,6 +10,7 @@ domain_router = routers.NestedSimpleRouter(
 domain_router.register('cars', views.GetSupplierCarViewSet, 'supplier_cars')
 domain_router.register(
     'set_discount', views.SetSupplierSaleViewSet, 'set_discount')
+domain_router.register('report', views.ReportsViewSet, 'report')
 
 urlpatterns = [
     path('', include(router.urls)),

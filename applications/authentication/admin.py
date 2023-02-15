@@ -1,7 +1,7 @@
 from authemail.admin import EmailUserAdmin
 from django.contrib import admin
-from applications.authentication.models import User
 
+from applications.authentication.models import User
 
 admin.site.unregister(User)
 
@@ -17,5 +17,3 @@ class MyUserAdmin(EmailUserAdmin):
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
         ('Custom info', {'fields': ('title', 'role')}),
     )
-
-
