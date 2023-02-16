@@ -10,3 +10,22 @@ services:
       - ./.var/postgresql:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+  redis:
+    container_name: showroom-redis
+    image: redis:6-alpine
+    volumes:
+    - ./.var/redis:/data
+    ports:
+    - "6379:6379"
+  celery:
+    container_name: showroom-celery
+    build: .
+    command: celery -A car_showroom worker
+    volumes:
+    - .:/app
+    environment:
+    - POSTGRES_HOST=postgres
+    - REDIS_HOST=redis
+    depends_on:
+    - postgres
+    - redis

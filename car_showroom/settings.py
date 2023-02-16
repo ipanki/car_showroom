@@ -96,6 +96,7 @@ DATABASES = {
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
         'HOST': os.getenv('POSTGRES_HOST'),
         'PORT': os.getenv('POSTGRES_PORT'),
+        'ATOMIC_REQUESTS': os.getenv('ATOMIC_REQUESTS'),
     }
 }
 
@@ -148,6 +149,12 @@ FIXTURE_DIRS = [
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+CELERY_BROKER_URL = "redis://%s:%s" % (os.getenv('REDIS_HOST'), os.getenv('REDIS_PORT'))
+CELERY_RESULT_BACKEND = "redis://%s:%s" % (os.getenv('REDIS_HOST'), os.getenv('REDIS_PORT'))
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
