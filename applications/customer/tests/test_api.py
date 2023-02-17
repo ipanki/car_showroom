@@ -9,7 +9,8 @@ from applications.customer.models import Customer
 class PageApiUserTestCase(APITestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create_user(username='testuser1', password='testpassword')
+        cls.user = User.objects.create_user(
+            username='testuser1', password='testpassword')
 
     def setUp(self):
         self.client.login(username='testuser1', password='testpassword')

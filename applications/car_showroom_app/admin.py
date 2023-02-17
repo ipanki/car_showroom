@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from applications.car_showroom_app.models import Showroom, CarsShowroom
+from applications.car_showroom_app.models import CarsShowroom, Showroom
+
 
 @admin.register(Showroom)
 class ShowroomAdmin(admin.ModelAdmin):
