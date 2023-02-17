@@ -20,7 +20,7 @@ services:
   celery:
     container_name: showroom-celery
     build: .
-    command: celery -A car_showroom worker
+    command: celery -A car_showroom worker -B
     volumes:
     - .:/app
     environment:
@@ -29,3 +29,29 @@ services:
     depends_on:
     - postgres
     - redis
+  app:
+    container_name: showroom-app
+    build: .
+    command: |
+      gunicorn --workers=2 --bind=0.0.0.0:8000 car_showroom.wsgi:application
+    volumes:
+    - .:/app
+    - ./config/staticfiles
+    ports:
+    - "8000:8000"
+    environment:
+    - POSTGRES_HOST=postgres
+    depends_on:
+    - postgres
+    - celery
+    - redis
+  webserver:
+    image: nginx:alpine
+    container_name: showroom-nginx
+    ports:
+    - "80:80"
+    volumes:
+    - ./config/staticfiles
+    - ./nginx.conf
+    depends_on:
+    - app

@@ -40,6 +40,8 @@ pylint = "*"
 fixtures = "*"
 drf-yasg = "*"
 django-debug-toolbar = "*"
+django-rest-authemail = "*"
+gunicorn = "*"
 
 [dev-packages]
 autoflake = "1.4"

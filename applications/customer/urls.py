@@ -9,6 +9,7 @@ router.register('location', views.LocationViewSet, 'location')
 domain_router = routers.NestedSimpleRouter(
     router, 'customer', lookup='customer')
 domain_router.register('offer', views.CreateOfferViewSet, 'offer')
+domain_router.register('report', views.ReportsViewSet, 'report')
 
 urlpatterns = [
     path('', include(router.urls)),

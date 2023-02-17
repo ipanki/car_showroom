@@ -24,3 +24,15 @@ class SetSupplierSaleSerializer(serializers.ModelSerializer):
     class Meta:
         model = SupplierSale
         fields = ('car', 'end_date', 'supplier', 'discount')
+
+
+class ReportRowSerializer(serializers.Serializer):
+    car = serializers.IntegerField()
+    car_showroom = serializers.IntegerField()
+    count = serializers.IntegerField(source='amount_cars')
+    price = serializers.DecimalField(decimal_places=2, max_digits=10)
+    total = serializers.IntegerField(source='amount')
+
+
+class ReportSerializer(serializers.Serializer):
+    report = ReportRowSerializer(many=True)

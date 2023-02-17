@@ -77,3 +77,5 @@ django-debug-toolbar==3.8.1
 drf-nested-routers==0.93.4
 pre-commit==3.0.4
 pylint==2.16.1
+django-rest-authemail==2.1.4
+authemail==2.1.4
