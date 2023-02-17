@@ -5,4 +5,5 @@ from applications.history.models import SellHistory
 
 @admin.register(SellHistory)
 class HistoryAdmin(admin.ModelAdmin):
-    list_display = ('supplier', 'customer', 'car', 'car_showroom', 'price', 'count')
+    list_display = ('supplier', 'customer', 'car',
+                    'car_showroom', 'price', 'count')

@@ -11,10 +11,10 @@ class LocationAdmin(admin.ModelAdmin):
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('user', 'name', 'phone', 'birthday', 'balance', 'location', 'created_date')
+    list_display = ('user', 'name', 'phone', 'birthday',
+                    'balance', 'location', 'created_date')
 
 
 @admin.register(Offer)
 class OfferAdmin(admin.ModelAdmin):
     list_display = ('car', 'price', 'customer')
-

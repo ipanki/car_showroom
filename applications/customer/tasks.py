@@ -1,5 +1,5 @@
-from car_showroom.celery import app
 from applications.customer.services import customer_buy_cars
+from car_showroom.celery import app
 
 
 @app.task

@@ -1,7 +1,7 @@
 import os
 
-from celery.schedules import crontab
 from celery import Celery
+from celery.schedules import crontab
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'car_showroom.settings')
 app = Celery('car_showroom')
